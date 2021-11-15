@@ -49,7 +49,8 @@ function getCities() {
                 countryList.innerHTML += countryCard
             })
         })
-}
+    }
+
 
 function getCountries() {
     axios.get('http://localhost:4004/countries')

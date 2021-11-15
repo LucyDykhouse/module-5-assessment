@@ -28,6 +28,15 @@ module.exports = {
             .catch(err => console.log(err));
     },
 
+    getCities: (req, res) => {
+        sequelize
+            .query(`select ct.city_id, ct.name as city, ct.rating, cn.country_id, cn.name as country
+                    from cities ct
+                    join countries cn on cn.country_id = ct.country_id;`)
+            .then(dbRes => res.status(200).send(dbRes[0]))
+            .catch(err => console.log(err));
+    },
+
     seed: (req, res) => {
         sequelize.query(`
             drop table if exists cities;
